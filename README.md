@@ -30,7 +30,7 @@ Este projeto é um sistema web para cadastro, consulta e gerenciamento de livros
 ### 1. Clone o repositório
 
 ```bash
-git clone https://seu-repositorio.git
+git clone https://github.com/rminossi/teste-tjjud.git
 cd teste-tjjud
 ```
 
