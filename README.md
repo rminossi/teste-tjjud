@@ -15,6 +15,7 @@ Este projeto é um sistema web para cadastro, consulta e gerenciamento de livros
 - Relatórios customizados (ex: livros por autor)
 - API RESTful para integração externa
 - Testes automatizados (Feature e Unit)
+- **Documentação Swagger (OpenAPI) integrada**
 
 ---
 
@@ -24,6 +25,22 @@ Este projeto é um sistema web para cadastro, consulta e gerenciamento de livros
 - (Opcional) [Git](https://git-scm.com/)
 - **Para rodar testes unitários:**
   - O container/app PHP deve ter as extensões `pdo_sqlite` e `sqlite3` instaladas e habilitadas.
+
+---
+
+## Documentação da API (Swagger)
+
+A documentação interativa da API está disponível em:
+
+[http://localhost:8000/api/documentation](http://localhost:8000/api/documentation)
+
+### Como atualizar a documentação
+
+Sempre que alterar ou criar endpoints, gere a documentação:
+
+```bash
+docker-compose exec app php artisan l5-swagger:generate
+```
 
 ---
 
@@ -79,6 +96,7 @@ docker-compose exec app npm run dev
 
 - **Web:** [http://localhost:8000](http://localhost:8000)
 - **API:** [http://localhost:8000/api](http://localhost:8000/api)
+- **Swagger:** [http://localhost:8000/api/documentation](http://localhost:8000/api/documentation)
 
 ---
 

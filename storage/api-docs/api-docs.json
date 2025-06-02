@@ -1,0 +1,536 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API TJJud",
+        "description": "Documentação da API do sistema de gerenciamento de livros, autores e assuntos.",
+        "contact": {
+            "name": "Seu Nome",
+            "email": "seu-email@exemplo.com"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Servidor local"
+        }
+    ],
+    "paths": {
+        "/api/assuntos": {
+            "get": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Listar assuntos",
+                "operationId": "d508d3604432e32082c9f627ffd78c66",
+                "responses": {
+                    "200": {
+                        "description": "Lista de assuntos"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Criar assunto",
+                "operationId": "af3c6b92c90b765ccc4e3cd5dfb28ecd",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "Descricao"
+                                ],
+                                "properties": {
+                                    "Descricao": {
+                                        "type": "string",
+                                        "example": "Assunto Teste"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Assunto criado com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao criar assunto"
+                    }
+                }
+            }
+        },
+        "/api/assuntos/{codAs}": {
+            "get": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Exibir assunto",
+                "operationId": "53833795dd115c7c51305d95774fd5b0",
+                "parameters": [
+                    {
+                        "name": "codAs",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Assunto encontrado"
+                    },
+                    "404": {
+                        "description": "Assunto não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Atualizar assunto",
+                "operationId": "b6479aca543f801a81e75daf146d8719",
+                "parameters": [
+                    {
+                        "name": "codAs",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "Descricao"
+                                ],
+                                "properties": {
+                                    "Descricao": {
+                                        "type": "string",
+                                        "example": "Assunto Atualizado"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Assunto atualizado com sucesso"
+                    },
+                    "404": {
+                        "description": "Assunto não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Excluir assunto",
+                "operationId": "d6290df314a0e8110935b2672422ab16",
+                "parameters": [
+                    {
+                        "name": "codAs",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Assunto excluído com sucesso"
+                    },
+                    "404": {
+                        "description": "Assunto não encontrado"
+                    }
+                }
+            }
+        },
+        "/api/autores": {
+            "get": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Listar autores",
+                "operationId": "347c686fedd9f10a6e78a12949be3ca9",
+                "responses": {
+                    "200": {
+                        "description": "Lista de autores"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Criar autor",
+                "operationId": "bc9bd4b13f84f2b5568af1b097c49d48",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "Nome"
+                                ],
+                                "properties": {
+                                    "Nome": {
+                                        "type": "string",
+                                        "example": "Autor Teste"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Autor criado com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao criar autor"
+                    }
+                }
+            }
+        },
+        "/api/autores/{codAu}": {
+            "get": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Exibir autor",
+                "operationId": "51e4f6c89c5e2450da5b492a6c812054",
+                "parameters": [
+                    {
+                        "name": "codAu",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Autor encontrado"
+                    },
+                    "404": {
+                        "description": "Autor não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Atualizar autor",
+                "operationId": "d70bb599e9e99bc9cec33cb201d0a2e8",
+                "parameters": [
+                    {
+                        "name": "codAu",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "Nome"
+                                ],
+                                "properties": {
+                                    "Nome": {
+                                        "type": "string",
+                                        "example": "Autor Atualizado"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Autor atualizado com sucesso"
+                    },
+                    "404": {
+                        "description": "Autor não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Excluir autor",
+                "operationId": "f5ca8fb5978e5660e33250092f94d7d7",
+                "parameters": [
+                    {
+                        "name": "codAu",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Autor excluído com sucesso"
+                    },
+                    "404": {
+                        "description": "Autor não encontrado"
+                    }
+                }
+            }
+        },
+        "/api/livros": {
+            "get": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Listar livros",
+                "operationId": "51d7d7a1686131c730645b6eac9264e5",
+                "responses": {
+                    "200": {
+                        "description": "Lista de livros"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Criar livro",
+                "operationId": "d557d66d9220fabae0f1162790ba75ab",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "Titulo",
+                                    "Editora",
+                                    "Edicao",
+                                    "AnoPublicacao",
+                                    "Valor",
+                                    "autores",
+                                    "assuntos"
+                                ],
+                                "properties": {
+                                    "Titulo": {
+                                        "type": "string",
+                                        "example": "Livro Teste"
+                                    },
+                                    "Editora": {
+                                        "type": "string",
+                                        "example": "Editora Teste"
+                                    },
+                                    "Edicao": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "AnoPublicacao": {
+                                        "type": "string",
+                                        "example": "2024"
+                                    },
+                                    "Valor": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 29.9
+                                    },
+                                    "autores": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "assuntos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Livro criado com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao criar livro"
+                    }
+                }
+            }
+        },
+        "/api/livros/{codL}": {
+            "get": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Exibir livro",
+                "operationId": "ee1eaf70e419a84b11b5ebc6bf648e0f",
+                "parameters": [
+                    {
+                        "name": "codL",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Livro encontrado"
+                    },
+                    "404": {
+                        "description": "Livro não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Atualizar livro",
+                "operationId": "b575a094a0de09e32f035161456a9d99",
+                "parameters": [
+                    {
+                        "name": "codL",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "Titulo",
+                                    "Editora",
+                                    "Edicao",
+                                    "AnoPublicacao",
+                                    "Valor",
+                                    "autores",
+                                    "assuntos"
+                                ],
+                                "properties": {
+                                    "Titulo": {
+                                        "type": "string",
+                                        "example": "Livro Atualizado"
+                                    },
+                                    "Editora": {
+                                        "type": "string",
+                                        "example": "Editora Nova"
+                                    },
+                                    "Edicao": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "AnoPublicacao": {
+                                        "type": "string",
+                                        "example": "2023"
+                                    },
+                                    "Valor": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 49.9
+                                    },
+                                    "autores": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "assuntos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Livro atualizado com sucesso"
+                    },
+                    "404": {
+                        "description": "Livro não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Livros"
+                ],
+                "summary": "Excluir livro",
+                "operationId": "98d9dec22be507e348abba7f51bed6d9",
+                "parameters": [
+                    {
+                        "name": "codL",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Livro excluído com sucesso"
+                    },
+                    "404": {
+                        "description": "Livro não encontrado"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Assuntos",
+            "description": "Gerenciamento de assuntos"
+        },
+        {
+            "name": "Autores",
+            "description": "Gerenciamento de autores"
+        },
+        {
+            "name": "Livros",
+            "description": "Gerenciamento de livros"
+        }
+    ]
+}
