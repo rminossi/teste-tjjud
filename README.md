@@ -22,6 +22,8 @@ Este projeto é um sistema web para cadastro, consulta e gerenciamento de livros
 
 - [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/)
 - (Opcional) [Git](https://git-scm.com/)
+- **Para rodar testes unitários:**
+  - O container/app PHP deve ter as extensões `pdo_sqlite` e `sqlite3` instaladas e habilitadas.
 
 ---
 
@@ -84,8 +86,36 @@ docker-compose exec app npm run dev
 
 ### Testes automatizados (PHPUnit)
 
+Para rodar todos os testes (unitários e de feature):
+
 ```bash
 docker-compose exec app php artisan test --env=testing
+```
+
+### Testes Unitários dos FormRequests
+
+Os testes unitários dos FormRequests garantem que as validações de cada request estão corretas. Eles estão localizados em `tests/Unit/`.
+
+Para rodar apenas os testes unitários:
+
+```bash
+docker-compose exec app php artisan test --testsuite=Unit
+```
+
+### Requisitos para os testes
+
+- O ambiente de testes utiliza SQLite em memória por padrão. Certifique-se de que o PHP do container possui as extensões `pdo_sqlite` e `sqlite3` habilitadas.
+- Se aparecer o erro `could not find driver (Connection: sqlite)`, instale as extensões no container:
+
+```bash
+docker-compose exec app apt-get update
+docker-compose exec app apt-get install -y php-sqlite3
+```
+
+Depois, reinicie o container:
+
+```bash
+docker-compose restart app
 ```
 
 ---
@@ -126,5 +156,6 @@ docker-compose exec app php artisan test --env=testing
 - Nunca rode testes automatizados em banco de produção.
 - Para ambiente de testes, utilize um banco de dados separado (configurado em `.env.testing`).
 - As rotas de API estão disponíveis em `/api/livros`, `/api/autores`, `/api/assuntos`.
+- Os testes unitários dos FormRequests estão em `tests/Unit/` e cobrem todas as validações de entrada da API.
 
 ---
